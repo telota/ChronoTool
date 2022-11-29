@@ -8,14 +8,14 @@ In dem hier vorgestellten Experiment werden nicht nur die Einträge aus mehreren
 
 Zu den Daten aus der Chronologie kommen daher Informationen über Briefe von und an Humboldt mitsamt Absendedaten und -orten aus correspSearch (https://correspsearch.net/) sowie sukzessive auch aus anderen Quellen und der umfassenden Sekundärliteratur, die weiterhin die Stationen der Reise ergänzen helfen. Als weitere Datenquellen für das hier vorgestellte Experiment kommen Geo-daten aus GeoNames und historische sowie zeitgenössische Karten aus OpenStreetMap hinzu. Erst aus dieser Aggregation dieser verschiedenen Datenquellen und -typen ergibt sich die Möglichkeit einer genauen Rekonstruktion der Reiserouten und weiterer Aufenthaltsorte Humboldts – und das im Idealfall auf Tage oder gar Stunden genau.   
 
-*In der unteren Abbildung sieht man die Rekonstruktion der Reise Humboldts durch Spannien 1799 und weitere geplante Reisen, die aber nie durchgeführt werden. Humboldt hatte ursprünglich vor sich einer Karavane nach Mekka anzuschließen um nach Ägypten zu kommen. Da das Schiff, welches ihn und seine Begleitung von Marseille nach Afrika bringen sollte, im Hafen von Marseille gesunken war, entschloss er sich nach Spanien zu gehen.....*
+*In der unteren Abbildung sieht man die Rekonstruktion der Reise Humboldts durch Spannien 1799 und weitere geplante Reisen, die aber nie durchgeführt werden. Humboldt hatte ursprünglich vor sich einer Karavane nach Mekka anzuschließen um nach Ägypten zu kommen. Da das Schiff, welches ihn und seine Begleitung von Marseille nach Afrika bringen sollte, im Hafen von Marseille gesunken war, entschloss er sich nach Spanien zu gehen.....(Anmerkung: diesist keine offizielle Veröffentlichung der edition humboldt digital)*
 ![reiseafrika](https://user-images.githubusercontent.com/54958922/204593421-4f5408e4-8d5a-4590-94a8-16d7a7607e36.jpg)
 
 
   
 ## Mitmachen
 
-Bei Fragen und Anregungen gerne an Gordon Fischer (gfischer@bbaw.de) schreiben. 
+Bei Fragen und Anregungen gerne an Gordon Fischer (gfischer@bbaw.de) oder Christian Thomas (thomas@bbaw.de) schreiben. 
 
 
 ## Lizenzen Programmcode und Dokumentation
