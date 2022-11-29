@@ -1,3 +1,5 @@
+## Das Chronotopische Tool zu den Reisen von Alexander von Humboldt
+
 Dieses Experiment ist der Versuch, *datengetrieben* anhand der Aufzeichnungen Alexander von Humboldts, die im Rahmen einer Hybrid-Edition an der BBAW erschlossen werden, ein sehr viel genaueres Bild der großen Entdeckungsreisen Humboldts zu generieren.  
 
 Die Datengrundlage bilden die kritisch bearbeiteten Texte der edition humboldt digital (ehd; https://edition-humboldt.de/). Diese werden als TEI-XML ediert, in einer Datenbank (eXist-DB) gespei-chert und über xquery/xslt sowie Javascript und CSS als Webanwendung visualisiert. Alle chronolo-gischen und topographischen Einträge werden innerhalb der ehd mit einer eindeutigen ID versehen; die Ortseinträge werden zudem über das Register der Edition mit Normdaten bzw. GeoNames-URIs (https://www.geonames.org/) angereichert.   
@@ -10,6 +12,7 @@ Zu den Daten aus der Chronologie kommen daher Informationen über Briefe von und
 ## Mitmachen
 
 Bei Fragen und Anregungen gerne an Gordon Fischer (gfischer@bbaw.de) schreiben. 
+
 
 ## Lizenzen Programmcode und Dokumentation
 
