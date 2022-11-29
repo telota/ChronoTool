@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Reisetagebücher Alexander von Humboldt</title>
+
+	<meta charset="utf-8" />
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" type="image/x-icon" href="#">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js"></script>
+	<script src="https://d3js.org/d3.v5.min.js" type="text/javascript"></script>
+
+	
+	<!--<link rel="stylesheet" href="js/leaflet.css"/>
+	    <script src="js/leaflet.js"></script>-->
+	    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+            <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	    <script src="https://unpkg.com/leaflet-center-cross@0.0.8/dist/leaflet.CenterCross.js"></script>
+ 	    <script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script>
+	    
+	    <script src="js/measure.js"></script>
+	    <script src="js/auswahl.js"></script>
+	    <script src="js/animation.js"></script>
+	    <script src="js/auflistung.js"></script>
+	    <script src="js/parseXML.js"></script>
+	    <script src="js/Italy_500.js"></script>
+	    <script src="js/Handelswege1.js"></script>
+           <script src="js/schleiermacher.js"></script>
+	    <!--<script src="{{ asset('js/reise.js') }}"></script>-->
+	    <!--<script src="js/reise.js"></script>-->
+	    <script src="js/Poststationen.js"></script>
+	    <script src="polylinedecorator/Leaflet.PolylineDecorator/dist/leaflet.polylineDecorator.js"></script>
+	    <!--<script src="js/filterroute.js" type="text/javascript"></script>-->
+	    <link rel="stylesheet" href="css/measure.css">
+	     <link rel="stylesheet" href="css/routes.css">
+	    <link rel="stylesheet" href="css/PolylineMeasure.css"/>
+	    <link rel="stylesheet" href="css/Reisetagebuecher_Humboldt.css" />
+	    
+	    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/flatly/bootstrap.min.css">
+	    <script src="https://ppete2.github.io/Leaflet.PolylineMeasure/Leaflet.PolylineMeasure.js"></script>
+	    <script src="js/Reisetagebuecher_Humboldt.js" type="text/javascript"></script>
+	    <script src="js/Chronologie5Feb.js" type="text/javascript"></script>
+	    <script src="js/Ortsregister_31012021.js" type="text/javascript"></script>
+	    <script src="js/BereisteLaender.js" type="text/javascript"></script>
+	    <script src="js/FindbuchAll2.js" type="text/javascript"></script>
+	    <script src="js/Kalliope_Contributor.js" type="text/javascript"></script>
+	    <script src="js/leaflet-editable-polyline.js"></script>
+	
+	    <link rel="stylesheet" id="themeCSS" href="jqRangeSlider/css/classic.css"> 
+	    <script src="jqRangeSlider/lib/jquery.mousewheel.min.js"></script>
+	    <script src="js/goethe.js" type="text/javascript"></script>
+	    <!--<script src="https://raw.githubusercontent.com/Humboldt-Repository/Personen/main/Johann_Wolfgang_von_Goethe/goethe.js" type="text/javascript"></script>-->
+	    <script src="jqRangeSlider/jQDateRangeSlider-min.js"></script>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+	    <!-- laravel -->
+	    <link href="//netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+	    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
+	    <link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.css" />
+	    <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+	   
+	    <!-- leaflet-elevation -->
+	    <!--<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+	    <script src="https://unpkg.com/leaflet-ui@0.5.0/dist/leaflet-ui.js"></script>-->
+	
+	    <link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@1.6.8/dist/leaflet-elevation.min.css" />
+	    <script src="https://unpkg.com/@raruto/leaflet-elevation@1.6.8/dist/leaflet-elevation.min.js"></script>
+	    
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.min.js"></script>
+	    <link rel="stylesheet" href="Leaflet.print-master/dist/leaflet.print.css"/>
+	    <script src="Leaflet.print-master/dist/leaflet.print.js"></script>
+	    <script src="https://cdn.bootcss.com/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+	    <script src="https://cdn.bootcss.com/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+	  
+	    <script src="js/L.D3SvgOverlay.min.js"></script>
+	    <script src="tree-xml-viewer-formatter/js/simpleXML.js"></script>
+	    <link rel="stylesheet" href="tree-xml-viewer-formatter/css/simpleXML.css">
+
+	    <style>
+	      html {
+		  scroll-behavior: smooth;
+	      }
+	      .box {
+		  float: left;
+		  width: 20%;
+		  margin-right: 3.33333%;
+		  padding: 20px;
+		  background: #eee;
+		  box-sizing: border-box;
+	      }
+
+	      .elevation-div {
+			height: 100%;
+			width: 100%;
+			padding: 0px;
+			margin: 0px;
+		}
+
+		.leaflet-map {
+			height: 55%;
+			max-height: 100vh;
+		}
+
+		.elevation-div {
+			height: 25%;
+			font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+		}
+		.info {
+		    padding: 6px 8px;
+		    font: 14px/16px Arial, Helvetica, sans-serif;
+		    background: white;
+		    background: rgba(255,255,255,0.8);
+		    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		    border-radius: 5px;
+		}
+		.legend {
+		    background-color: “black”;
+		    line-height: 25px;
+		    color: #555;
+		    width: auto;
+		}
+		.legend i {
+		    width: 18px;
+		    height: 18px;
+		    float: left;
+		    margin-right: 8px;
+		    opacity: 0.7;
+		}
+		dialog{
+		    white-space: pre;
+		}
+		.imglinks{
+		    vertical-align: middle;
+		    border-style: none;
+		    padding-right: 5px;
+		}
+	    </style>
+</head>
+<body>
+  
+  <div id="mySidenav_allinformation" class="sidenav_allinformation"></div>
+  <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <br/>
+       <label id="download" style="cursor:pointer;">Lade Karte als Bild runter</label>
+      <br/>
+      <hr style='border: 1px solid  #818181'>
+      <label id="aktuellerzeitraum"></label><br/>
+  <label id="labelall" title="" onclick="$('#datepickerall').show();" style="cursor:pointer;margin-right: 120px;">Tag</label>
+  <input style="z-index:12000; position:absolute; left: 30px;" value="1769-01-01" id="datepickerall"></input>
+  <br/>
+  
+  <label id="labelmin" title="" onclick="$('#datepickermin').show(); $('#min1').show();" style="cursor:pointer;margin-right: 120px;">Zeitraum (Beginn)</label><label id="min1" onclick="$('#datepickermin').hide();$('#min1').hide();  datum='datepicker';" style="cursor:pointer; right:0;">[&times;]</label>
+  <div style="z-index:12000; position:relative;" value="1769-01-01" id="datepickermin"></div>
+  <br/>
+  <label id="labelmax" title="" onclick="$('#datepickermax').show(); $('#max1').show();" style="cursor:pointer;margin-right: 130px;">Zeitraum (Ende)</label><label id="max1" onclick="$('#datepickermax').hide(); $('#max1').hide(); datum='datepicker'" style="cursor:pointer; text-align:right;" >[&times;]</label>
+  <div style="z-index:12000; position:relative;" value="1859-12-31" class="cc" id="datepickermax"></div>
+  <!--<div id="slider" style="width:80%; margin-left:10%; z-index:12000; position:relative;"></div>-->
+  <br/>
+  <!--<label id="autoclose" style="font-size: 14px;" title="">Autoclose der Popups</label>
+  <br>
+  <label id="autocloseon" title="" onclick="autoclose=true" style="cursor:pointer; font-size: 12px;">On</label>
+  <label id="autocloseoff" title="" onclick="autoclose=false" style="cursor:pointer; font-size: 12px;">Off</label>-->
+  <hr style='border: 1px solid  #818181'>
+
+
+  <label title="Wähle die Tagebücher aus, die du untersuchen willst (mehrere möglich). Die Chronologie zeigt alle Einträge von 1766 bis 1859 an.">Reise</label>
+  <select  title="Wähle die Tagebücher aus, die du untersuchen willst (mehrere möglich). Die Chronologie zeigt alle Einträge von 1766 bis 1859 an." class="button" id="reise">
+    <option value="HideAll('','','')">Alle Reisen ausblenden</option>
+    <option value="England('','','')">Humboldt in England (1790)</option>
+    <option value="Frankreich('','','')">Humboldt in Frankreich (1798)</option>
+    <option value="Spanien('','','')">Humboldt in Spanien (1799)</option>
+    <option value="Amerika('','','')">Humboldt in Amerika (1799-1804)</option>
+    <option value="RusslandEhrenberg('','','')" >Ehrenberg in Russland (1829)</option>
+    <option value="RusslandHumboldt('','','')">Humboldt in Russland (1829)</option>
+    <option value="Chronolog('','','');">Chronologie (1766-1859)</option>
+  </select>
+
+  <button id="bt0no" onclick="ChronologStop()" class="button">Chronologie ausblenden</button>
+  <button id="bt1no" onclick="FrankreichStop()" class="button" >Frankreich ausblenden</button>
+  <button id="bt6no" onclick="EnglandStop()" class="button" >England ausblenden</button>
+  <button id="bt2no" onclick="SpanienStop()" class="button">Spanien ausblenden</button>
+  <button id="bt3no" onclick="RusslandEhrenbergStop()" class="button">Ehrenberg in Russland ausblenden</button>
+  <button id="bt4no" onclick="RusslandHumboldtStop()" class="button">Humboldt in Russland ausblenden</button>
+  <button id="bt5no" onclick="AmerikaStop()" class="button">Amerika ausblenden</button>
+  <br/>
+  <label title="Wähle die Tagebücher aus, die du untersuchen willst (mehrere möglich). Die Chronologie zeigt alle Einträge von 1766 bis 1859 an.">Karten</label>
+  <select  title="Verschiedene Karten stehen zur Auswahl. Die ersten drei sind Standardkarten von Leaflet. Karte 4 und 5 zeigen politische Karten (teilweise etwas ungenau). Die Uralkarte lädt aufgrund ihrer Größe relativ lange."class="button" id="myList1">
+    <option value="Map1()">Open Street</option>
+    <option value="Map2()">Satellit</option>
+    <option value="Map3()">Topographie</option>
+    <!--<option value="Map1815()">Politische Karte ca. 1815 (teilweise ungenau)</option>
+    <option value="Map1783()">Politische Karte ca. 1783 (teilweise ungenau)</option>-->
+    <!--<option value="Ural()">Karte vom Ural (1837)</option>-->
+    <!--<option value="Frankreich1800()">Karte von Frankreich (1800)</option>-->
+  </select>
+  <br/>
+  <label>Historische Karten</label>
+  <button id="btfrankan" onclick="Frankreich1800(); $('#btfrankan').hide();" class="button">Karte von Frankreich (1800)</button>
+  <button id="bturalan" onclicke="Ural()"class="button">Ural-Karte (1837)</button>
+  <button id="btan1" onclick="Map1815(); $('#btan1').hide();" class="button">Politische Karte ca. 1815 (teilweise ungenau)</button>
+  <button id="btan2" onclick="Map1783(); $('#btan2').hide();" class="button">Politische Karte ca. 1783 (teilweise ungenau)</button>
+  <br/>
+  <button id="btd" onclick="Map1783Stop()" class="button">Politische Karte 1783 <br/>ausblenden</button>
+  <button id="btb" onclick="Map1815Stop()" class="button">Politische Karte 1815 <br/>ausblenden</button>
+  <button id="btural" onclick="UralStop()" class="button">Ural-Karte <br/>ausblenden</button>
+  <button id="btfrank" class="button">Frankreich-Karte <br/>ausblenden</button>
+  
+  <hr style='border: 1px solid  #818181'>
+  <label  style="font-size:20px;" title="">Allgemeine Ortssuche</label>
+  <br/>
+
+  <select  title="" class="button" id="selectcountry">
+
+    <option value="SelectCountry('../data/russia_mountains_europe.json');">Russland (europäische Gebirge/Berge/Inseln)</option>
+    <option value="SelectCountry('../data/russia_mountains_asia.json');">Russland (asiaische Gebirge/Berge/Inseln)</option>
+    <option value="SelectCountry('../data/russia_streams_europe.json');">Russland (europäische Gewässer)</option>
+    <option value="SelectCountry('../data/russia_streams_asia.json');">Russland (asiatische Gewässer)</option>
+    <option value="SelectCountry('../data/russia_city_europe.json');">Russland (europäische Orte)</option>
+    <option value="SelectCountry('../data/russia_city_asia.json');">Russland (asiatische Orte)</option>
+
+    
+  </select>
+  
+  <!--<form autocomplete="off" action="/action_page.php">-->
+  <div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text" name="myCountry" placeholder="Select place">
+  </div>
+  <input type="submit" onclick="GeonamePlace()">
+  <!--</form>-->
+  <script src="js/autocomplete.js"></script>
+  <br/>
+  <br/>
+  <label  style="font-size:20px;" title="">Humboldt Ortsregister</label>
+  <br/>
+  <select  title="Alle Orte aus dem Ortsregister (ca. 3700) stehen zur Verfügung." class="button" id="presel">
+    <option value=''><strong></strong></option>
+  </select>
+  <select  title="Alle Orte aus dem Ortsregister (ca. 3700) stehen zur Verfügung." class="button" id="myList2">
+  </select>
+  <label style="cursor:pointer" onclick="RemoveSearchPlace()" title="Lösche Einträge aus der Ortsuche" id="deletepresel">Lösche Einträge</label>
+  <hr style='border: 1px solid  #818181'>
+  
+  <label title="Schaltet das Ortsregister für correspSearch ein">Spezielle Orte</label>
+  <br/>
+  <select  title="Schaltet das Ortsregister für correspSearch ein" class="button" id="corSea">
+    <option value="varcs='all'; RunCorrespSearchOff(); ">None</option>
+    <option value="varcs='all'; RunCorrespSearch(); ">Alle Orte</option>
+
+    <option value="varcs='post'; RunPost(); ">Poststationen (um 1750)</option>
+    <option value="varcs='post'; RunViabundus();">alte Handelsrouten (Viabundus)</option>
+  </select>
+  <hr style='border: 1px solid  #818181'>
+  <label style="font-size:20px;">Briefmetadaten</label>
+  <br/>
+  <label style="cursor:pointer" id="findbuch" onclick="RunFindbuch()">Findbuch an</label>
+  <label style="cursor:pointer" id="findbuchaus" onclick="RunFindbuchOff()">Findbuch aus</label>
+  <br/>
+  <label style="cursor:pointer" id="kalliope" onclick="RunKalliope()">Kalliope an</label>
+  <label style="cursor:pointer" id="kalliopeaus" onclick="RunKalliopeOff()">Kalliope aus</label>
+  <hr style='border: 1px solid  #818181'>
+  <!--<label>Wähle aus und klicke auf die Karte</label>-->
+  <label title="Wähle einen Radius aus und klicke auf die Karte. Es werden alle Orte im Umkreis innerhalb des gewählten Radius angezeigt. Klicken auf den Namen in der Legende zeigt diesen Ort an. Es werden sowohl alle Orte aus dem Ortsregister als auch Orte aus anderen Quellen angezeigt.">Umgebungssuche</label>
+  <select title="Wähle einen Radius aus und klicke auf die Karte. Es werden alle Orte im Umkreis innerhalb des gewählten Radius angezeigt. Klicken auf den Namen in der Legende zeigt diesen Ort an. Es werden sowohl alle Orte aus dem Ortsregister als auch Orte aus anderen Quellen angezeigt." onclick="RunRadius(); vars='true'" class="button" id="miles">
+    <option value='0'>keine Auswahl</option>
+    <option value='30'>30 km (ein Tagesritt)</option>
+    <option value='60' >60 km (zwei Tagesritte)</option>
+    <option value='90'>90 km (drei Tagesritte)</option>
+    <option value='120'>120 km (vier Tagesritte)</option>
+    <option value='150'>150 km (fünf Tagesritte)</option>
+  </select>
+  <!--<button title="Schaltet zusätzlich Orte die nicht im Ortsregister stehen dazu (kurze Ladezeit möglich)." id="btexperton" onclick="RunRadius; vars='true'; expert='true'; $('#btexpertoff').show(); $('#btexperton').hide()" class="button">Expertenmodus an</button>
+      <button id="btexpertoff" onclick="RunRadius(); vars='true'; expert='false'; $('#btexpertoff').hide(); $('#btexperton').show()" class="button">Expertenmodus aus</button>-->
+      <button id="btradius" onclick="$('.sidebar').hide();  $('#btradius').hide();  map.removeLayer(theCircle); map.removeLayer(theMarker); map.removeLayer(geojsonLayer); RunRadius(); vars='false'" class="button">Umkreis <br/>ausblenden</button>
+      <button id="btradius1" onclick="vars='true'" class="button">aktivieren</button>
+      <button id="btradius2" onclick="vars='false'" class="button">Deaktivieren</button>
+      <br/>
+      <hr style='border: 1px solid  #818181'>
+      <!--<label style="cursor:pointer;" onclick="$('.leaflet-control').css('left', '300px'); editLayer()">Reiseroute erstellen</label>-->
+     
+      <!--<label style="font-size:12px;" >Doppelklick auf die Karte erstellt den ersten Punkt.</label>-->
+      <!--<div id="map"></div>-->
+      <br/>
+
+      <label style="font-size: 20px;">Visualisierung der Reiserouten</label>
+      <input  id="loadfile" value="">
+      </input>
+      <label style="cursor:pointer;" id="getfile" onclick="fromGit('Laden', 'Ansicht');">
+	Datei in der Ansicht laden
+      </label>
+      <br/>
+      <label style="cursor:pointer;" id="getfile" onclick="fromGit('Laden', 'Bearbeitung'); editLayer()">
+	Datei im Bearbeitungsmodus laden
+      </label>
+   
+      
+      <br/>
+       <label id="emptyfile" style="cursor:pointer;" onclick="fromGit('Neu','Bearbeitung'); editLayer(); vars='false' " >Neue Reiseroute erstellen.</label>
+       <label style="font-size: 12px;">Definiere Dateinamen (.json wird automatisch hinzugefügt)</label>
+       <input  id="filename">
+      </input>0
+      <br/>
+      <label style="cursor:pointer;" id="convert" onclick="toGit()">
+	Datei speichern
+      </label>
+      <br/>
+    
+     <br/>
+     <div id="reise2">
+       
+       <label class="distanz" title="??">Max. km/Tag</label><input  title="??" style="font-size : 12px; width: 50px;" type="text" value="90" id="DistanzMax" class="distanz">
+       <label class="distanz" title="??">Tage</label><input  title="??" style="font-size : 12px; width: 50px;" type="text" value="30" id="DaysMax" class="distanz">
+       <button class="button" onclick="dumpPoints()">Exportiere Route (Test)</button>
+       <button class="button" onclick="resetPolyline()">Reset Path</button>
+     </div>
+     <br/>
+     <hr style='border: 2px solid  #818181'>
+     <a href="#" onclick="show_subtitle()">Dokumentation</a>
+     <a href="#" id="subm0" style="font-size:15px" onclick="window.open('dokumentation/index.html#section1')">Die Idee der chronotopischen Untersuchung</a>
+ <a href="#" id="subm1" style="font-size:15px" onclick="window.open('dokumentation/index.html#section2')">Das Zeitintervall</a>
+ <a href="#" id="subm2" style="font-size:15px" onclick="window.open('dokumentation/index.html#section3')">Die Tagebücher</a>
+ <a href="#" id="subm4" style="font-size:15px" onclick="window.open('dokumentation/index.html#section4')">Die Karten</a>
+ <a href="#" id="subm5" style="font-size:15px" onclick="window.open('dokumentation/index.html#section5')">Die Ortssuche</a>
+ <a href="#" id="subm6" style="font-size:15px" onclick="window.open('dokumentation/index.html#section6')">Entdecke die Umgebung</a>
+ <a href="#" id="subm7" style="font-size:15px" onclick="window.open('dokumentation/index.html#section7')">Entfernungsmessung</a>
+ <a href="#" id="subm8" style="font-size:15px" onclick="window.open('dokumentation/index.html#section8')">Verwendung in Texten</a>
+ <a href="#" onclick="window.open('https://edition-humboldt.de/')">edition humboldt digital</a>
+ <a href="#" onclick="window.open('https://github.com/Humboldt-Repository/Personen')">Repositorium</a>
+ <a href="#" onclick="window.open('https://telotawebdev.bbaw.de/avhr/reisetagebuecher?reise=goethe_italien&dist=90&days=500')">Ref. Goethe 1786 in Italien</a>
+ <a href="#" onclick="window.open('https://www.bbaw.de/bbaw-digital/telota')">Telota (BBAW)</a>
+ <a href="#" onclick="window.open('https://correspsearch.net/')">correspSearch</a>
+ <a href="#" onclick="window.open('https://edition-humboldt.de/about/index.xql?id=H0002928&l=de')">Contact</a>
+ <a href="#" onclick="window.open('detail/conditions.html')">Terms & Conditions</a>
+</div>
+<div id="main">
+<span style="font-size:30px;cursor:pointer; left:0; top: -2px;  margin-right: 200px; " onclick="openNav()">&#9776; Menu</span>
+<label style="color:red; margin-left:20%;" title="Wähle einen Tag aus">HUMBOLDT CHRONOTOPOGRAPHIE (ENTWICKLUNGSVERSION)</label><br>
+
+<a id="opensidepanel" href="javascript:void(0)" class="openbtn" onclick="$('.sidenav_allinformation').css({'width':'500px', 'opacity':'1'}); $('#closesidepanel').show(); $('#opensidepanelexpand').show(); $('#opensidepanel').hide();">&#8610;</a>
+<!--<a id="opensidepanelexpand" href="javascript:void(0)" class="openbtn" onclick="$('.sidenav_allinformation').css({'width':'900px', 'opacity':'1'}); $('#closesidepanel').show(); $('#opensidepanel').hide();">&#8610;</a>-->
+<a id="closesidepanel" href="javascript:void(0)" class="closebtn" onclick="$('.sidenav_allinformation').css({'width':'80px', 'opacity':'0.3'}); $('#opensidepanel').show(); $('#closesidepanel').hide();">&#8611;</a>
+
+<div style="display: inline">
+  <!--<div id="wrapper" style="z-index:12000">
+      <!-- style div with scrollbar if needed   -->
+      <!--<button onclick="update()">Los</button>-->
+      <textarea id="pointsTextArea" rows="5" cols="70"></textarea>
+      
+      <div id='map'>
+      </div>
+      
+  </div>
+  <!--<div id='text' name="textansicht"></div>-->
+</div>
+
+<!--<script src="js/elevation.js"></script>-->
+<script src="js/reise.js"></script>
+<script >
+  
+  //Autocomplete place filter
+  values = [
+      {label: "aaaaaa", id: 1},
+      {label: "aaabbb", id: 2},
+      {label: "aaaccc", id: 3},
+    ]
+  
+  $("#input").autocomplete({
+      source: values,
+	select: function (event, ui){
+            $("#input").val(ui.item.id);
+            return false;
+	}
+  });
+   
+  var h = (window.innerHeight-50).toString();
+  $("#map").css("height",h.concat("px"))
+  
+    function makeDraggable(popup){
+	var pos = map.latLngToLayerPoint(popup.getLatLng());
+	L.DomUtil.setPosition(popup._wrapper.parentNode, pos);
+	var draggable = new L.Draggable(popup._container, popup._wrapper);
+	draggable.enable();
+	
+	draggable.on('dragend', function() {
+            var pos = map.layerPointToLatLng(this._newPos);
+            popup.setLatLng(pos);
+	});
+    }
+
+
+    var datum="", inputVal1="1769-01-01", inputVal2="1859-12-31"
+    var search="False"
+    var range="false"
+    var currplace=""
+
+    $("#datepickerall").datepicker({
+	onSelect: function() {
+	    
+	    $("#aktuellerzeitraum").empty()
+	    $("#aktuellerzeitraum").append("<p>Aktueller Tag: <br/>"+document.getElementById("datepickerall").value+"</p>")
+		datum="datepicker"
+		range="false"
+		UpdateDatum("false")
+	   
+	},
+	    keepOpen: true,
+	    dateFormat: "yy-mm-dd",
+	    startDate: '1766-10-19',
+	    endDate: '1859-12-31',
+	    changeMonth: true, 
+	    changeYear: true, 
+	    yearRange: "1766:1859"
+	});
+
+    
+    $("#datepickermin").datepicker({
+	onSelect: function() {
+	    $("#aktuellerzeitraum").empty()
+	    $("#aktuellerzeitraum").append("<p>Aktueller Zeitraum:<br/>"+document.getElementById("datepickermin").value+" - "+document.getElementById("datepickermax").value+"</p>")
+	    datum="datepicker"
+	    range="true"
+            UpdateDatum("true")
+	   
+      },
+      keepOpen: true,
+      dateFormat: "yy-mm-dd",
+      startDate: '1766-10-19',
+      endDate: '1859-12-31',
+      changeMonth: true, 
+      changeYear: true, 
+      yearRange: "1766:1859"
+    });
+    
+    $("#datepickermax").datepicker({
+	onSelect: function() {
+	    $("#aktuellerzeitraum").empty()
+	    $("#aktuellerzeitraum").append("<p>Aktueller Zeitraum:<br/>"+document.getElementById("datepickermin").value+" - "+document.getElementById("datepickermax").value+"</p>")
+	    datum="datepicker"
+	    range="true"
+            UpdateDatum("true")
+	},
+      
+      dateFormat: "yy-mm-dd",
+      startDate: '1766-10-19',
+      endDate: '1859-12-31',
+      changeMonth: true, 
+      changeYear: true, 
+      yearRange: "1766:1859"
+  });
+  
+  function getParameters()
+  {
+      var parameterFragments = location.search.substr(1).split("&");
+      var parameters = {}
+      for(var i = 0; i < parameterFragments.length; i++)
+      {
+          var splittedParameter = parameterFragments[i].split("=");
+          parameters[splittedParameter[0]] = decodeURIComponent(splittedParameter[1]);
+      }
+      return parameters;
+  }
+  var parameters = getParameters();
+  var varmin=""
+  var tempdate=""
+  var min2="", max2=""
+  
+  if (parameters.begin && parameters.end)
+  {
+      min2 = new Date(parameters.begin),
+      max2 = new Date(parameters.end);
+  }
+  else
+  {
+      min2 = new Date("1769-01-01"),
+      max2 = new Date("1859-12-31");
+  }
+  
+
+    
+  function fullRange()
+  {
+      $("#slider").dateRangeSlider("bounds", new Date('1759-01-01'), new Date('1859-12-31'));
+      $('#slider').dateRangeSlider('values', new Date('1759-01-01'), new Date('1859-12-31'))
+  }
+
+  // Startet den date slider: nicht löschen!
+  //timerun()
+  
+  
+  function dynamicDate(days) {
+      
+      var list = [];
+      for (var i = 1; i <= days ; i++) {
+	  list.push(i);
+      }
+  
+      inputVal1=$("#slider").dateRangeSlider("min")
+      var check="true"
+      $.each(list, function(i, number) {
+      
+          setTimeout(function() {
+	   
+	  $("#slider").dateRangeSlider("bounds", new Date(inputVal1), new Date(new Date(inputVal1).setDate(new Date(inputVal1).getDate() + number)));
+	  $("#slider").dateRangeSlider("values", new Date(inputVal1), new Date(new Date(inputVal1).setDate(new Date(inputVal1).getDate() + number)));
+
+	  }, i*1500)
+      })
+}
+  
+  //###################
+  // Start MENU
+  //###################
+  
+  var varcs=""
+  function openNav() {
+      document.getElementById("mySidenav").style.width = "300px";
+      $(".leaflet-control").css("left", "300px")
+  }
+  function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      $(".leaflet-control").css("left", "0px")
+  }
+  
+    function getValue(file){
+	var value= $.ajax({ 
+	    url: file, 
+	    async: false
+	}).responseText;
+	return value;
+    }
+    
+    function show_subtitle()  {
+	if($("#subm0,#subm1,#subm2, #subm3, #subm4, #subm5, #subm6, #subm7, #subm8").is(":hidden")){
+	    $("#subm0,#subm1,#subm2, #subm3, #subm4, #subm5, #subm6, #subm7, #subm8").show()}
+	else if($("#subm0,#subm1,#subm2, #subm3, #subm4, #subm5, #subm6, #subm7, #subm8").is(":visible")){
+	  $("#subm0,#subm1,#subm2, #subm3, #subm4, #subm5, #subm6, #subm7, #subm8").hide()}
+    }
+    
+    $('#datepickermin, #datepickermax, #slider').hide();
+    $("#subm0,#subm1,#subm2, #subm3, #subm4, #subm5, #subm6, #subm7, #subm8").hide()
+    $("#btexpertoff,#findbuchaus,#kalliopeaus, #pointsTextArea").hide()
+    $("#runanimation").hide();
+    $("#reise2").hide()
+    $(".distanz").hide();
+    $('#opensidepanelexpand').hide();
+    $("#closesidepanel").hide();
+    $("#opensidepanel").show();
+    $('#min1,#max1').hide();
+    $(".extern2").hide()
+    
+    var series=$.parseJSON(getValue('data/orderedPlaces.json'))
+    var mapping=$.parseJSON(getValue('data/MapKey_Geoname.json'))
+        console.log("MAPPING")
+    console.log(mapping)
+
+    var alphabet = [];
+    
+    $(series[0].index).each(function(index, value){
+        alphabet += '<option value="'+value+'">'+value+'</option>';
+    });
+
+    $('#presel').html(alphabet);
+    var preselect="A"
+    var options =  '<option value=""><strong>Ort(e) mit A</strong></option>';
+    $(series).each(function(index, value){
+		if(value.letter == preselect){
+		    options += '<option  onclick="SearchPlace()" value="'+value.place+'">'+value.place+'</option>';
+		}
+    });
+    
+    $('#myList2').html(options);
+    $("#presel").change(function(){
+        preselect = $(this).val();
+	var options =  '<option value=""><strong>Ort(e) mit '+$(this).val()+'</strong></option>';
+	
+	$(series).each(function(index, value){
+	    if(value.letter == preselect){
+		         //options += '<option  id="selcity" value="SearchPlace('+value.place+')">'+value.place+'</option>';
+			 options += '<option  onclick="SearchPlace()" value="'+value.place+'">'+value.place+'</option>';
+		}
+	});
+	$('#myList2').html(options);
+    });
+
+    var series=$.parseJSON(getValue('data/orderedPlaces.json'))
+    var alphabet = [];
+    //console.log(series[0].index)
+    $(series[0].index).each(function(index, value){
+        alphabet += '<option value="'+value+'">'+value+'</option>';
+    });
+    
+    $('#jahr').html(alphabet);
+    var preselect="A"
+    var options =  '<option value=""><strong>Ort(e) mit A</strong></option>';
+    $(series).each(function(index, value){
+	if(value.letter == preselect){
+	    options += '<option  onclick="SearchPlace()" value="'+value.place+'">'+value.place+'</option>';
+	}
+	});
+    $('#tagesliste').html(options);
+    $("#jahr").change(function(){
+        preselect = $(this).val();
+	var options =  '<option value=""><strong>Ort(e) mit '+$(this).val()+'</strong></option>';
+	$(series).each(function(index, value){
+		if(value.letter == preselect){
+			options += '<option  onclick="SearchPlace()" value="'+value.place+'">'+value.place+'</option>';
+		}
+	});
+    $('#myList2').html(options);
+    });
+    
+jQuery.loadScript = function (url, callback) {
+    jQuery.ajax({
+        url: url,
+        dataType: 'script',
+        success: callback,
+        async: true
+    });
+}
+
+    $('.sidebar').hide()
+    $('#btradius').hide()
+    
+    //ELEVATION
+    var elevation_options = {
+
+    // Default chart colors: theme lime-theme, magenta-theme, ...
+	theme: "lightblue-theme",
+	// Chart container outside/inside map container
+    detached: false,
+
+    // if (detached), the elevation chart container
+    elevationDiv: "#elevation-div",
+
+    // if (!detached) autohide chart profile on chart mouseleave
+    autohide: false,
+
+    // if (!detached) initial state of chart profile control
+    collapsed: false,
+
+    // if (!detached) control position on one of map corners
+    //position: "topright",
+
+    // Autoupdate map center on chart mouseover.
+    followMarker: true,
+
+    // Autoupdate map bounds on chart update.
+    autofitBounds: false,
+
+    // Chart distance/elevation units.
+    imperial: false,
+
+    // [Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])
+    reverseCoords: false,
+
+    // Acceleration chart profile: true || "summary" || "disabled" || false
+    acceleration: false,
+
+    // Slope chart profile: true || "summary" || "disabled" || false
+    slope: false,
+
+    // Speed chart profile: true || "summary" || "disabled" || false
+    speed: false,
+
+    // Display time info: true || "summary" || false
+    time: false,
+
+    // Display distance info: true || "summary"
+    distance: true,
+
+    // Display altitude info: true || "summary"
+    altitude: true,
+
+    // Summary track info style: "line" || "multiline" || false
+    summary: 'multiline',
+
+    // Toggle chart ruler filter.
+    ruler: true,
+
+    // Toggle chart legend filter.
+    legend: true,
+
+    // Toggle "leaflet-almostover" integration
+    almostOver: true,
+
+    // Toggle "leaflet-distance-markers" integration
+    distanceMarkers: false,
+
+    // Render chart profiles as Canvas or SVG Paths
+    preferCanvas: false
+
+    };
+    var map = new L.Map('map', { mapTypeId: 'terrain', center: [41.4583, 12.7059], zoom: 5 , closePopupOnClick: false});
+
+
+
+
+    //var map = new L.map('map').setView([38.74739, 6], 5);
+    // Instantiate elevation control.
+
+    
+    /*var controlElevation = L.control.elevation(elevation_options).addTo(map);
+    var controlLayer = L.control.layers(null, null, elevation_options);
+    controlLayer.addTo(map);
+
+		controlElevation.on('eledata_loaded', function(e) {
+			controlLayer.addOverlay(e.layer, e.name);
+		});*/
+    
+    // Load track from url (allowed data types: "*.geojson", "*.gpx", "*.tcx")
+    //controlElevation.load("http://localhost:8000/files/Spanien.geojson");
+
+    var countries = [];
+    var countriesOverlay = L.d3SvgOverlay(function(sel, proj) {
+   
+	var upd = sel.selectAll('path').data(countries);
+      upd.enter()
+	  .append('path')
+	  .attr('d', proj.pathFromGeojson)
+	  .attr('stroke', 'black')
+	  .attr('fill', function(){ return d3.hsl(Math.random() * 1560, 0.9, 0.5) })
+	  .attr('fill-opacity', '0.15');
+		upd.attr('stroke-width', 1 / proj.scale);
+  });
+
+  
+  $('#btb, #btd, #bt0no,#bt1no,#bt2no,#bt3no,#bt4no,#bt5no,#bt6no,#btural,#btfrank').hide()
+    function Map1815() {
+
+	Map1783Stop()
+	$.loadScript('https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js', function (){
+	    $('#btan1').hide()
+	    $('#btb').show()
+	    d3.json("data/world1815.json", function(data) { countries = data.features; countriesOverlay.addTo(map) })
+	})
+    }
+
+    function Map1815Stop() {
+	$('#btb').hide()
+	$('#btan1').show()
+	map.removeLayer(countriesOverlay)
+  }
+    function Map1783() {
+	Map1815Stop()
+      $.loadScript('https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.9/d3.min.js', function (){
+	  $('#btan2').hide()
+	  $('#btd').show()
+      d3.json("data/world1783.json", function(data) { countries = data.features; countriesOverlay.addTo(map) })
+      })
+   }
+  function Map1783Stop() {
+      $('#btd').hide()
+      $('#btan2').show()
+      map.removeLayer(countriesOverlay)
+  }
+
+  g=L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/light-v9',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(map);
+  $('#map1').css("background","lightgreen");
+  $('#map2,#map3').css("background","transparent");
+
+  var image=""
+  function Ural()
+  {
+  $('#btural').show()
+  var imageUrl = 'https://digilib.bbaw.de/digitallibrary/servlet/Scaler?fn=silo10/avhr/Karten/Ural_1837/00000001.tif&dw=6800&dh=3315',
+      imageBounds = [[50.532216, 44.0], [60.273941, 72.0]];
+      image = L.imageOverlay(imageUrl, imageBounds).addTo(map);
+      var btn = document.getElementById('btural');
+
+      btn.onclick = function() {
+	  $('#bturalan').show();
+	  $('#btural').hide()
+	  imagehistoric.removeFrom(map);
+      }
+  }
+
+  /*function UralStop() {
+      $('#btural').hide()
+      map.removeLayer(image);
+      
+      }*/
+    
+  var imagehistoric=""
+  function Frankreich1800()
+    {
+	$('#btfrank').show()
+	var imageUrl = 'frankreich1800.jpg', imageBounds = [[41.762216, -6.0], [51.453941, 10.7]];
+	imagehistoric = L.imageOverlay(imageUrl, imageBounds).addTo(map);
+	var btn = document.getElementById('btfrank');
+	
+	// node.innerHTML = "I'm an image now."
+	
+	btn.onclick = function() {
+	    $('#btfrankan').show();
+	    $('#btfrank').hide()
+	    imagehistoric.removeFrom(map);
+      }
+
+  
+  }
+  
+  function Map1() {
+
+      $('#map1').css("background","lightgreen");
+           $('#map2,#map3').css("background","transparent");
+            map.removeLayer(g)
+	    
+            g=L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+		maxZoom: 18,
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		id: 'mapbox/light-v9',
+		tileSize: 512,
+		zoomOffset: -1
+	}).addTo(map);
+  }
+  function Map2() {
+
+      $('#map2').css("background","lightgreen");
+      $('#map1,#map3').css("background","transparent");
+       map.removeLayer(g)
+
+       var mapLink = '<a href="http://www.esri.com/">Esri</a>';
+       var wholink = 'i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community';
+
+       g=L.tileLayer(
+        'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; '+mapLink+', '+wholink,
+        maxZoom: 18,
+        }).addTo(map);
+	  
+  }
+  function Map3() {
+      $('#map3').css("background","lightgreen");
+      $('#map2,#map1').css("background","transparent");
+      map.removeLayer(g)
+      L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	maxZoom: 17,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+}).addTo(map)
+  }
+
+  
+  let polylineMeasure = L.control.polylineMeasure ({unit:'metres', showBearings:true, clearMeasurementsOnStop: false, showClearControl: true, showUnitControl: true})
+  polylineMeasure.addTo(map);
+  // L.control.polylineMeasure(options).addTo(map);
+  
+ 
+  var markerX=""
+  function Search(feature) {
+
+     
+      var inputPlace=""
+      if (search=="False") {
+	  inputPlace  =  document.getElementById("myList2").value;
+      }
+      if (search=="True"){
+	  inputPlace = currplace
+	  
+      }
+ 
+	  
+	  var place=feature.properties.ContentHeader
+	  if (inputPlace=="Clear")
+	  {
+	      map.removeLayer(markerX)
+	  }
+	  
+	  if (place==inputPlace)
+	  {
+	       map.flyTo([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], 8)
+	       return feature.properties
+	  }
+
+
+  }
+
+    function RemoveSearchPlace()
+    {
+	if (markerX != "") {
+	    map.removeLayer(markerX)
+	}
+    }
+    
+  function SearchPlace() {
+     
+      var i
+      markerX = L.geoJSON(Ortsregister, {
+	  filter: Search,
+	  style: function (feature) {
+	      return feature.properties && feature.properties.style;
+	  },
+	  
+	  onEachFeature: onEachFeatureSearch,
+	  
+	  pointToLayer: function (feature, latlng) {
+	      return L.circleMarker(latlng, {
+		  radius: 8,
+		  fillColor: "transparent",
+		  color: "red",
+		  weight: 2,
+		  opacity: 1,
+		  fillOpacity: 0.8
+			});
+	  }
+	}).addTo(map);
+  }
+
+ 
+    function Filter(feature) {
+
+	var i;
+
+	if (datum=="slider") {
+	    
+	    inputVal1=$("#slider").dateRangeSlider("min").getFullYear()+"-"+($("#slider").dateRangeSlider("min").getMonth()+1)+"-"+$("#slider").dateRangeSlider("min").getDate()
+	    inputVal2=$("#slider").dateRangeSlider("max").getFullYear()+"-"+($("#slider").dateRangeSlider("max").getMonth()+1)+"-"+$("#slider").dateRangeSlider("max").getDate()
+	    
+	}
+	if (datum=="datepicker" && range=="true") {
+	    
+	    inputVal1=document.getElementById("datepickermin").value;
+	    inputVal2=document.getElementById("datepickermax").value;
+	    
+      }
+	
+	if (datum=="datepicker" && range=="false") {
+	
+	  inputVal1=document.getElementById("datepickerall").value;
+	  inputVal2=document.getElementById("datepickerall").value;
+
+      }
+      inputVal1=new Date(inputVal1).setHours(0, 0, 0, 0)
+      inputVal2=new Date(inputVal2).setHours(0, 0, 0, 0)
+  
+      for (i = 0; i < feature.properties.Content.length; i++) {
+	  
+	  var currentdate=new Date(feature.properties.Content[i].date).setHours(0, 0, 0, 0)
+	  if (currentdate >= inputVal1 && currentdate < inputVal2) {
+	      feature.properties["opacity"]=0.8
+	      feature.properties["radius"]=6
+	      feature.properties["color"]="black"
+	      
+	      return feature.properties
+	  }
+	  if (currentdate == inputVal2) {
+	      
+	      feature.properties["opacity"]=0.3
+	      feature.properties["radius"]=8
+	      feature.properties["color"]="red"
+	      
+	      return feature.properties
+	  }
+      }
+      
+  }
+  
+  function FilterFB(feature) {
+      
+      var i;
+      for (i = 0; i < feature.properties.Content.length; i++) {
+	  return feature.properties
+	  
+      }
+  }
+  function FilterCS(feature) {
+
+      var i;
+      for (i = 0; i < feature.properties.Content.length; i++) {
+
+	  if (varcs=="all") {
+	      
+	      return feature.properties
+	      
+	  }
+	  if (varcs=="sender_humboldt" && (feature.properties.sender_humboldt_all=="true" || feature.properties.empfaenger_humboldt_all=="true"
+					  )) {
+	    
+	      return feature.properties
+	      
+	  }
+	    if (varcs=="empfaenger_humboldt" && feature.properties.empfaenger_humboldt_all=="true") {
+	      
+	      return feature.properties
+	      
+	    }
+	      if (varcs=="sender_humboldt_1829" && (feature.properties.sender_humboldt_1829=="true" ||
+						     feature.properties.empfaenger_humboldt_1829=="true"
+						   )) {
+	      
+	      return feature.properties
+	      
+	    }
+	  if (varcs=="ehrenberg" && feature.properties.ehrenberg=="true") {
+	      
+	      return feature.properties
+	      
+	  }
+       }
+      
+      
+      
+  }
+ 
+  var windowObjectReference;
+  var windowFeatures = "menubar=yes,location=yes,resizable=yes,scrollbars=yes,status=yes";
+
+  function openRequestedPopup() {
+      windowObjectReference = window.open("http://www.cnn.com/", "CNN_WindowName", windowFeatures);
+  }
+  
+ 
+
+  function closeNav_allinformation() {
+      document.getElementById("mySidenav_allinformation").style.width = "0";
+  }
+  function onEachFeatureSearch(feature, layerSearch) {
+
+      layerSearch.on('click', function (e) {
+	  layerSearch._leaflet_id = feature.properties.ContentHeader;
+	  var popupContent = "<div><h4><a target='_blank' href='https://edition-humboldt.de/register/orte/detail.xql?id="+feature.properties.key+"'>"+feature.properties.ContentHeader + "</a><h4/><h6>key: "+feature.properties.key+"</br>longitude: "+feature.properties.longitude+"<br/>latitude: "+feature.properties.latitude+"<br/>GeoNames ID: "+feature.properties.geoname_id+"</h6><a target='_blank' href='"+feature.properties.correspSearch+"'>correspSearch</a></div>" ;
+	  layerSearch.bindPopup(popupContent, {offset: new L.Point(0, -5)} );
+	  //this.openPopup();
+      });
+  }
+
+    var autoclose=true;
+  function onEachFeature(feature, layer) {
+      if (datum=="slider") {
+	  inputVal1=$("#slider").dateRangeSlider("min").getFullYear()+"-"+($("#slider").dateRangeSlider("min").getMonth()+1)+"-"+$("#slider").dateRangeSlider("min").getDate()
+	  inputVal2=$("#slider").dateRangeSlider("max").getFullYear()+"-"+($("#slider").dateRangeSlider("max").getMonth()+1)+"-"+$("#slider").dateRangeSlider("max").getDate()
+      }
+      if (datum=="datepicker" && range=="true") {
+	
+	  inputVal1=document.getElementById("datepickermin").value;
+	  inputVal2=document.getElementById("datepickermax").value;
+      }
+      if (datum=="datepicker" && range=="false") {
+	
+	  inputVal1=document.getElementById("datepickerall").value;
+	  inputVal2=document.getElementById("datepickerall").value;
+      }
+      inputVal1=new Date(inputVal1).setHours(0, 0, 0, 0)
+      inputVal2=new Date(inputVal2).setHours(0, 0, 0, 0)
+      layer.on('click', function (e) {
+	  if (feature.properties && feature.properties.Content) {
+	      
+	      var content=""
+	      var currentgeoname=""
+	      if (feature.properties.id==undefined) {
+		  $.each(mapping, function( index, value) {
+		    
+		      currentgeoname=mapping[feature.properties.Content[0]["place-key"]]
+		 
+		  })
+		  var i;
+		  var liste=[]
+		  for (i = 0; i < feature.properties.Content.length; i++) {
+		      var currentdate=new Date(feature.properties.Content[i].date).setHours(0, 0, 0, 0)
+		     
+		      if (currentdate >= inputVal1 && currentdate <= inputVal2 ) {
+			  liste.push("<button class='button1' onclick='allInformation(\""+feature.properties.Content[i]["date"]+"\",\"True\", \"time\")'>"+feature.properties.Content[i]["date"]+"</button><a target='_blank' href='https://correspsearch.net/search.xql?correspondent=http%3A%2F%2Fd-nb.info%2Fgnd%2F118554700&startdate="+feature.properties.Content[i].date+"&enddate="+feature.properties.Content[i].date+"'><img class='imglinks' src='images/cs-avatar.png.jpg'  width='20' height='15'></img class='imglinks'></a><a target='_blank' href='https://actaborussica.bbaw.de/hofkalendarium/indexHofkalendarium.xql?time1="+feature.properties.Content[i]["date"]+"&time2="+feature.properties.Content[i]["date"]+"'><img class='imglinks' src='https://actaborussica.bbaw.de/resources/images/mop-logo-transparent-shadow.png'  width='25' height='20'></img class='imglinks'></a><p style='margin-left:10px;'>"+feature.properties.Content[i]["text"]+"</p><br/>")}
+		  }
+		  liste=liste.join(' ')
+		  if (feature.properties.Content[0]["place-key"]!="") { 
+		      content ="<div></h6></h5><br/><button class='button1' onclick='allInformation(\""+feature.properties.ContentHeader+"\",\"True\", \"space\")'>"+feature.properties.ContentHeader+" ("+feature.properties.Content[0]["key"]+")</button><a target='_blank' href='https://edition-humboldt.de/register/orte/detail.xql?id="+feature.properties.Content[0]["place-key"]+"'><img class='imglinks' src='images/favicon.png'></img class='imglinks'></a><a target='_blank' href='https://correspsearch.net/search.xql?correspondent=http%3A%2F%2Fd-nb.info%2Fgnd%2F118554700&place=http://sws.geonames.org/"+currentgeoname+"'><img class='imglinks' src='images/cs-avatar.png.jpg'  width='20' height='15'></img class='imglinks'></br></a><br/>"+liste+"<br></div>";
+		  }
+		  if (feature.properties.Content[0]["key"]!="" && feature.properties.Content[0]["place-key"]==undefined) { 
+		      content ="<div></h6></h5><br/><button class='button1' onclick='allInformation(\""+feature.properties.ContentHeader+"\",\"True\", \"space\")'>"+feature.properties.ContentHeader+" ("+feature.properties.Content[0]["key"]+")</button><a target='_blank' href='https://edition-humboldt.de/register/orte/detail.xql?id="+feature.properties.Content[0]["key"]+"'><img class='imglinks' src='images/favicon.png'></img class='imglinks'></a><a target='_blank' href='https://correspsearch.net/search.xql?correspondent=http%3A%2F%2Fd-nb.info%2Fgnd%2F118554700&place=http://sws.geonames.org/"+currentgeoname+"'><img class='imglinks' src='images/cs-avatar.png.jpg'  width='20' height='15'></img class='imglinks'></br></a><br/>"+liste+"<br></div>";
+		  }
+		  
+		  else {
+	              content ="<div></h6></h5><br/><button class='button1' onclick='allInformation(\""+feature.properties.ContentHeader+"\",\"True\", \"space\")'>"+feature.properties.ContentHeader+" ("+feature.properties.Content[0]["place-key"]+")</button><a target='_blank' href='https://edition-humboldt.de/register/orte/detail.xql?id="+feature.properties.Content[0]["place-key"]+"'><img class='imglinks' src='images/favicon.png'></img class='imglinks'></a><a target='_blank' href='https://correspsearch.net/search.xql?correspondent=http%3A%2F%2Fd-nb.info%2Fgnd%2F118554700&place=http://sws.geonames.org/"+currentgeoname+"'><img class='imglinks' src='images/cs-avatar.png.jpg' width='20' height='15'></img class='imglinks'></br></a><br/>"+liste+"<br></div>";
+		  }}
+
+	  }
+	  
+	  layer.bindPopup(content, {maxHeight: 300, offset: new L.Point(0, -5), autoClose: autoclose, autoPan: false});
+	  //this.openPopup();
+      });
+  }
+
+    //inputVal1="1798-10-20"
+    //inputVal2="1798-12-31"
+    //allInformation("1798-10-20", "False")
+  
+    var vars="false"
+    var expert="false"
+    var corresp="false"
+    var array=[]
+ 
+
+  function GoToCity(var1, var2)
+    {
+	var marker = L.marker([var1,var2], { title: 'My marker' }).addTo(map);
+	map.flyTo([var1,var2], 6)
+    }
+
+   function RunKalliopeOff()
+    {
+	$("#kalliopeaus").hide()
+	$("#kalliope").show()
+	if (Kal != "") {
+	    map.removeLayer(Kal)
+	}
+    }
+  function RunKalliope() {
+      
+      var sidenavContent=[]
+      var combination1={}
+      var pointer=[]
+      $.each(Kalliope.features, function( index, value) {
+	  combination1[index]=value
+      })
+      function sortOnKeys(dict) {
+	  
+	  var sorted = [];
+	  for(var key in dict) {
+	      sorted[sorted.length] = key;
+	  }
+	  sorted.sort();
+	  
+	  var tempDict = {};
+	  for(var i = 0; i < sorted.length; i++) {
+	      tempDict[sorted[i]] = dict[sorted[i]];
+	  }
+	  
+	    return tempDict;
+      }
+      
+      combination1= sortOnKeys(combination1);
+	var combination2=[]
+	var indexliste=[]
+	$.each(combination1, function( index, value) {
+	    indexliste.push(index) 
+	})
+	counter=0;
+      $.each(combination1, function( index, value) {
+	  
+	  var temp=[]
+	  $.each(value, function( index, value1) {
+		if (value1.properties.Content.further_url!="") {
+		    temp.push("<p style='font-size:14px'>Titel:  "+value1.properties.Content.title+"</p><p style='font-size:14px'>Institution:  "+value1.properties.Institution+"</p></p><p style='font-size:12px'>Sender: "+value1.properties.Content.Sender+"<br/>Empfänger: "+value1.properties.Content["Empfänger"]+"<br>Sendeort: "+value1.properties.Content.Sendeort+"<br/>Datum: "+value1.properties.Content.date+"<br/><a  target='_blank' href="+value1.properties.further_url+">Weitere Informationen</a></p><br/>")}
+	      else{ temp.push("<p style='font-size:14px'>Titel:  "+value1.properties.Content.title+"</p><p style='font-size:14px'>Institution:  "+value1.properties.Institution+"</p></p><p style='font-size:12px'>Sender: "+value1.properties.Content.Sender+"<br/>Empfänger: "+value1.properties.Content["Empfänger"]+"<br>Sendeort: "+value1.properties.Content.Sendeort+"<br/>Datum: "+value1.properties.Content.date+"<br/></p>")}
+	      pointer.push(value1) 
+	  });
+	    temp=temp.join(' ')
+	  combination2.push("<hr id='"+index+"' style='border: 3px solid #7cb342'></hr><div style='margin-left: 20px;'><div><h5>"+index+"<button style='font-size:12px;' class='button1' onclick='GoToCity("+value[0].properties.longitude+","+value[0].properties.latitude+")'>Go to map</button><div style='position: relative; margin-left:410px; top:-30px;'><a style='font-size:22px;' href='#"+indexliste[counter+1]+"'>&#8659;</a><a style=font-size:22px; ' href='#"+indexliste[counter-1]+"'>&#8657;</a></div></h5></div>"+temp+"</div>")
+	    counter=counter+1
+      });
+      
+      sidenavContent.push(combination2)
+      //add 2 sidenav
+      $("#mySidenav_allinformation").empty()
+      $('.sidenav_allinformation').css({'width':'500px', 'opacity':'1'}); $('#closesidepanel').show(); $('#opensidepanelexpand').show(); $('#opensidepanel').hide();
+      $("#mySidenav_allinformation").append(sidenavContent);
+      self.location.href = "#"+vars;
+      
+      $("#kalliope").hide()
+      $("#kalliopeaus").show()
+      console.log(pointer)
+	Kal = L.geoJson(pointer, {
+	    
+	    pointToLayer: function(feature, latlng) {
+		
+		return L.circleMarker(latlng, {
+		    radius:5,
+		    opacity: 1,
+		    //color: "#000",
+		    color:"black",
+		    fillColor:  "white",
+		    fillOpacity: 1
+		    
+		});  //.bindTooltip(feature.properties.Name);
+	    },
+	    
+	    onEachFeature: function (feature, layer) {
+		layer.on('click', function (e) {
+		   
+		    layer._leaflet_id = feature.properties.ContentHeader;
+		    var popupContent=""
+		    var sidenavContent=[]
+		    if (feature.properties.ContentHeader!='  ') {
+		    popupContent = "<div><a href='#"+feature.properties.ContentHeader+"'>"+feature.properties.ContentHeader+"</a><div>" ;
+			layer.bindPopup(popupContent);
+		    }
+		    this.openPopup();
+		  
+		})
+	    }
+	}).addTo(map);
+      
+      
+  }
+
+  function RunFindbuchOff()
+  {
+      $("#findbuchaus").hide()
+      $("#findbuch").show()
+      if (FB != "") {
+	  map.removeLayer(FB)
+      }
+  }
+  
+  function RunFindbuch() {
+	var sidenavContent=[]
+	var combination1={}
+	var pointer=[]
+	$.each(Findbuch.features, function( index, value) {
+	    combination1[index]=value
+	})
+	function sortOnKeys(dict) {
+
+	    var sorted = [];
+	    for(var key in dict) {
+		sorted[sorted.length] = key;
+	    }
+	    sorted.sort();
+	    
+	    var tempDict = {};
+	    for(var i = 0; i < sorted.length; i++) {
+		tempDict[sorted[i]] = dict[sorted[i]];
+	    }
+	    
+	    return tempDict;
+	}
+	
+	combination1= sortOnKeys(combination1);
+	var combination2=[]
+	var indexliste=[]
+	$.each(combination1, function( index, value) {
+	    indexliste.push(index) 
+	})
+	counter=0;
+	$.each(combination1, function( index, value) {
+	    
+	    var temp=[]
+	    $.each(value, function( index, value1) {
+		if (value1.properties.Content.further_url!="") {
+		    temp.push("<p style='font-size:14px'>Institution:<a target='_blank' href='"+value1.properties.GNDLink+"'>"+value1.properties.Institution+"</a></p><p style='font-size:12px'>Briefe von Humboldt: "+value1.properties.Content.gesendet+"<br/>Briefe an Humboldt: "+value1.properties.Content.erhalten+"<br>Sonstige Dokumente: "+value1.properties.Content.sonstige+"<br/><a  target='_blank' href="+value1.properties.further_url+">Weitere Informationen</a></p><br/>")}
+		else{ temp.push("<p style='font-size:14px'>Institution: <a target='_blank' href='"+value1.properties.GNDLink+"'>"+value1.properties.Institution+"</a></p><p style='font-size:12px'>Briefe von Humboldt: "+value1.properties.Content.gesendet+"<br/>Briefe an Humboldt: "+value1.properties.Content.erhalten+"<br>Sonstige Dokumente: "+value1.properties.Content.sonstige+"</p>")}
+		pointer.push(value1) 
+	    });
+	    temp=temp.join(' ')
+	    combination2.push("<hr id='"+index+"' style='border: 3px solid #7cb342'></hr><div style='margin-left: 20px;'><div><h5>"+index+"<button style='font-size:12px;' class='button1' onclick='GoToCity("+value[0].properties.longitude+","+value[0].properties.latitude+")'>Go to map</button><div style='position: relative; margin-left:410px; top:-30px;'><a style='font-size:22px;' href='#"+indexliste[counter+1]+"'>&#8659;</a><a style=font-size:22px; ' href='#"+indexliste[counter-1]+"'>&#8657;</a></div></h5></div>"+temp+"</div>")
+	    counter=counter+1
+	});
+
+	sidenavContent.push(combination2)
+	//add 2 sidenav
+	$("#mySidenav_allinformation").empty()
+	$('.sidenav_allinformation').css({'width':'500px', 'opacity':'1'}); $('#closesidepanel').show(); $('#opensidepanelexpand').show(); $('#opensidepanel').hide();
+	$("#mySidenav_allinformation").append(sidenavContent);
+	self.location.href = "#"+vars;
+	
+	$("#findbuch").hide()
+	$("#findbuchaus").show()
+	if (FB != "") {
+	    map.removeLayer(FB)
+	}
+	
+	FB = L.geoJson(pointer, {
+	    
+	    pointToLayer: function(feature, latlng) {
+		
+		return L.circleMarker(latlng, {
+		    radius:5,
+		    opacity: 1,
+		    //color: "#000",
+		    color:"black",
+		    fillColor:  "white",
+		    fillOpacity: 1
+		    
+		});  //.bindTooltip(feature.properties.Name);
+	    },
+	    
+	    onEachFeature: function (feature, layer) {
+		layer.on('click', function (e) {
+		   
+		    layer._leaflet_id = feature.properties.ContentHeader;
+		    var popupContent=""
+		    var sidenavContent=[]
+		    if (feature.properties.ContentHeader!='  ') {
+		    popupContent = "<div><a href='#"+feature.properties.ContentHeader+"'>"+feature.properties.ContentHeader+"</a><div>" ;
+			layer.bindPopup(popupContent);
+		    }
+		    this.openPopup();
+		  
+		})
+	    }
+	}).addTo(map);
+  }
+ 
+
+  
+  
+    function RunCorrespSearchOff() {
+	
+	if (Corresp != "") {
+	    map.removeLayer(Corresp)
+      }
+	if (Post != "") {
+	    map.removeLayer(Post)
+	}
+  }
+    
+    function RunCorrespSearch() {
+	if (Corresp != "") {
+	  map.removeLayer(Corresp)
+	}
+	
+	array=[Ortsregister]
+	Corresp = L.geoJson(array, {
+	    
+	    filter: FilterCS,
+	    pointToLayer: function(feature, latlng) {
+		
+		return L.circleMarker(latlng, {
+	       radius:3,
+	       opacity: 1,
+	       //color: "#000",
+	       color:"black",
+	       fillColor:  "white",
+	       fillOpacity: 1
+	       
+	   });  //.bindTooltip(feature.properties.Name);
+       },
+       
+     onEachFeature: function (feature, layer) {
+	 layer.on('click', function (e) {
+	     
+	     //layer._leaflet_id = feature.properties.ContentHeader;
+	     var popupContent = "<div><h4><a target='_blank' href='https://edition-humboldt.de/register/orte/detail.xql?id="+feature.properties.key+"'>"+feature.properties.ContentHeader + "</a><h4/><h6>key: "+feature.properties.key+"</br>longitude: "+feature.properties.longitude+"<br/>latitude: "+feature.properties.latitude+"<br/>GeoNames ID: "+feature.properties.geoname_id+"</h6><a target='_blank' href='"+feature.properties.correspSearch+"'>correspSearch</a></div>" ;
+	     layer.bindPopup(popupContent);
+	     //this.openPopup();
+	     
+	 })
+     }
+   }).addTo(map);
+  }
+    
+       function RunSchleiermacher()
+
+  {
+
+      if (CorrespSchleier != "") {
+	  map.removeLayer(CorrespSchleier)
+      }
+      
+      array=[OrtsregisterSchleier]
+
+      console.log("ORTSREGISTER")
+      console.log(array)
+      CorrespSchleier = L.geoJson(array, {
+	  
+	  filter: FilterCS,
+	  pointToLayer: function(feature, latlng) {
+	      
+	      return L.circleMarker(latlng, {
+		  radius:3,
+		  opacity: 1,
+		  //color: "#000",
+		  color:"black",
+		  fillColor:  "white",
+		  fillOpacity: 1
+		  
+	      });  //.bindTooltip(feature.properties.Name);
+	  },
+       
+	  onEachFeature: function (feature, layer) {
+	      layer.on('click', function (e) {
+		  
+	     //layer._leaflet_id = feature.properties.ContentHeader;
+		  var popupContent = "<div><h4><a target='_blank' href='https://schleiermacher-digital.de/register/orte/detail.xql?id="+feature.properties.key+"'>"+feature.properties.ContentHeader + "</a><h4/><h6>key: "+feature.properties.key+"</br>longitude: "+feature.properties.longitude+"<br/>latitude: "+feature.properties.latitude+"<br/>GeoNames ID: "+feature.properties.geoname_id+"</h6><a target='_blank' href='"+feature.properties.correspSearch+"'>correspSearch</a></div>" ;
+	     layer.bindPopup(popupContent);
+		  //this.openPopup();
+		  
+	      })
+	  }
+	}).addTo(map);
+    }
+
+    function RunPost() {
+
+      if (Post != "") {
+	  map.removeLayer(Post)
+      }
+    
+      array=[Poststationen]
+      Post = L.geoJson(array, {
+
+     
+      pointToLayer: function(feature, latlng) {
+		
+	  return L.circleMarker(latlng, {
+	      radius:3,
+	      opacity: 1,
+	      //color: "#000",
+	      color:"red",
+	      fillColor:  "white",
+	      fillOpacity: 1
+	      
+	   });  //.bindTooltip(feature.properties.Name);
+      },
+	  
+	  onEachFeature: function (feature, layer) {
+	      layer.on('click', function (e) {
+	     
+		  //layer._leaflet_id = feature.properties.ContentHeader;
+		  var popupContent = "<div><h5>Poststation: "+feature.properties.ContentHeader.toLowerCase().replace(/\b[a-z]/g, function(letter) {return letter.toUpperCase();}); + "<h5/><h6></br>longitude: "+feature.properties.longitude+"<br/>latitude: "+feature.properties.latitude+"<br/></h6></div>" ;
+		  layer.bindPopup(popupContent);
+		  //this.openPopup();
+		  
+	 })
+	  }
+      }).addTo(map);
+	
+  }
+
+    function RunViabundus() {
+
+      /*if (Viabundus != "") {
+	  map.removeLayer(Viabundus)
+      }*/
+    
+	array=[Viabundus]
+	var viabundus = array
+	
+	var myStyle = {
+	    "color": "gray",
+	    "weight": 3,
+	    "opacity": 0.9
+	};
+
+	L.geoJSON(viabundus, {
+	    style: myStyle
+	}).addTo(map);
+	
+    }
+
+
+    
+  function RunRadius() {
+      
+      if (Overalls != "") {
+	  map.removeLayer(Overalls)
+      }
+      if (expert=="true") {
+	  array=[ItalyGeonames]
+      }
+      if (expert=="false") {
+	  array=[ItalyGeonames]
+      }
+      Overalls = L.geoJson(array, {
+	  
+	  pointToLayer: function(feature, latlng) {
+	      
+	      return L.circleMarker(latlng, {
+		    radius:0,
+		    opacity: 0,
+		    //color: "#000",
+		    color:"black",
+		    fillColor:  "white",
+		    fillOpacity: 0
+				    
+		});  //.bindTooltip(feature.properties.Name);
+            },
+	    
+	  onEachFeature: function (feature, layer) {
+	      layer.on('click', function (e) {
+		  layer._leaflet_id = feature.properties.ContentHeader;
+		  var popupContent = "<div><h4>"+feature.properties.ContentHeader + "<h4/><h6>longitude: "+feature.properties.longitude+"<br/>latitude: "+feature.properties.latitude+"<br/>GeoNames ID: "+feature.properties.geoname_id+"</h6><a target='_blank' href='"+feature.properties.correspSearch+"'>correspSearch</a></div>" ;
+		  layer.bindPopup(popupContent);
+		  this.openPopup();
+	      })
+	  }
+      }).addTo(map);
+      
+      map.on('click',function(e){  
+	  lat = e.latlng.lat;
+	  lon = e.latlng.lng;
+	  if (vars=="true") {
+	      ProcessClick(lat,lon,0)}
+      });
+  }
+  
+  let marker0=""
+  let marker1=""
+  let marker2=""
+  let marker3=""
+  let marker4=""
+  let marker5=""
+  let marker6=""
+  let Overalls=""
+  let Corresp=""
+  let CorrespSchleier=""
+  let Post=""
+  let FB=""
+  let Kal=""
+  
+  function UpdateDatum(var1) {
+
+      if (datum=="slider") {
+	  inputVal1=$("#slider").dateRangeSlider("min").getDate()+"."+($("#slider").dateRangeSlider("min").getMonth()+1)+"."+$("#slider").dateRangeSlider("min").getFullYear()
+	  inputVal2=$("#slider").dateRangeSlider("max").getDate()+"."+($("#slider").dateRangeSlider("max").getMonth()+1)+"."+$("#slider").dateRangeSlider("max").getFullYear()
+      }
+      
+      if (datum=="datepicker" && var1=="false") {
+	  
+	  inputVal1=document.getElementById("datepickermin").value;
+	 
+	  
+	  var res = inputVal1.split("-")
+	  inputVal1=res[2]+"."+res[1]+"."+res[0]
+	  inputVal2=document.getElementById("datepickermax").value;
+	  var res = inputVal2.split("-")
+	  inputVal2=res[2]+"."+res[1]+"."+res[0]
+	  
+      }
+	
+        if (datum=="datepicker" && var1=="true") {
+
+	    
+	    inputVal1=document.getElementById("datepickerall").value;
+	 
+	    var res = inputVal1.split("-")
+	    inputVal1=res[2]+"."+res[1]+"."+res[0]
+	    inputVal2=document.getElementById("datepickerall").value;
+	    var res = inputVal2.split("-")
+	    inputVal2=res[2]+"."+res[1]+"."+res[0]
+	   
+      }
+        
+      if (checkFrank==true) {
+      Frankreich('','','') 
+      }
+      if (checkSpan==true) {
+      Spanien('','','') 
+      }
+      if (checkEhrenberg==true) {
+      RusslandEhrenberg('','','') 
+      }
+      if (checkRussland==true) {
+      RusslandHumboldt('','','') 
+      }
+      if (checkAmerika==true) {
+      Amerika('','','') 
+      }
+      if (checkChron==true) {
+      Chronolog('','','') 
+      }
+  }
+
+    if (parameters.datebegin!=undefined && parameters.dateend != undefined) {
+	inputVal1=parameters.datebegin
+	inputVal2=parameters.dateend
+	$("#aktuellerzeitraum").empty()
+	$("#aktuellerzeitraum").append("<p>Aktueller Zeitraum:<br/>"+inputVal1+" - "+inputVal2+"</p>")
+	//UpdateDatum()
+    }
+
+    UpdateDatum("false")
+    
+  function ChronologStop() {
+      checkChron=false
+      $('#bt0').show()
+      $('#bt0no').hide()
+      map.removeLayer(marker0)
+
+  }
+
+  function Chronolog(lat,lng,zoom) {
+
+      
+      checkChron=true
+      $('#bt0no').show()
+      $('#bt0no').css("border","3px solid gray");
+      // Selecting the input element and get its value 
+     
+      if (marker0 != "") {
+	  map.removeLayer(marker0)
+      }
+
+      if (lat!="") {
+	  map.flyTo([lat, lng], zoom)
+      }
+      var locations
+      marker0=L.geoJSON(Chronologie, {
+	  filter: Filter,
+	  style: function (feature) {
+	      return feature.properties && feature.properties.style;
+	  },
+	  onEachFeature: onEachFeature,
+	  pointToLayer: function (feature, latlng) {
+	      return L.circleMarker(latlng, {
+		  radius:feature.properties.radius ,
+		  fillColor: "gray",
+		  color: feature.properties.color,
+		  weight: 1,
+		  opacity: 1,
+		  fillOpacity: feature.properties.opacity
+	      });
+	  }
+      }).addTo(map);
+
+    
+      
+  }
+  
+  var checkFrank=false;
+  var checkEngland=false;
+  var checkSpan=false;
+  var checkEhrenberg=false;
+  var checkRussland=false;
+  var checkAmerika=false;
+  var checkChron=false
+
+  function getColor(league){
+		return league == 'NL' ? 'blue' :
+			   league == 'AL' ? 'red' :
+								'white';
+ }
+
+    function HideAll() {
+	$('#bt0no').hide(), $('#bt1no').hide(), $('#bt2no').hide(), $('#bt3no').hide(), $('#bt4no').hide(), $('#bt5no').hide(), $('#bt6no').hide()
+	if (marker0 != "") {
+	    map.removeLayer(marker0)
+	}
+	if (marker1 != "") {
+	    map.removeLayer(marker1)
+	}
+	if (marker2 != "") {
+	    map.removeLayer(marker2)
+	}
+	if (marker3 != "") {
+	    map.removeLayer(marker3)
+	}
+	if (marker4 != "") {
+	    map.removeLayer(marker4)
+	}
+	if (marker5 != "") {
+	    map.removeLayer(marker5)
+	}
+	if (marker6 != "") {
+	    map.removeLayer(marker6)
+	}
+	
+    }
+    
+ 
+    function EnglandStop() {
+	checkEngland=false
+	$('#bt6').show()
+	$('#bt6no').hide()
+	map.removeLayer(marker6)
+    }
+    
+  function England(lat,lng,zoom) {
+
+      checkEngland=true
+      //$('#bt1').hide()
+      $('#bt6no').show()
+      $('#bt6no').css("border","3px solid pink");
+      
+     
+      if (marker6 != "") {
+	  map.removeLayer(marker6)
+      }
+      
+      if (lat!="") {
+      map.flyTo([49.737, 5.923], 6)
+             }
+      /*else {
+
+	   map.flyTo([lat, lng], zoom)
+      }*/
+      //map.panTo(new L.LatLng(35.737, 5.923));
+      marker6 = L.geoJSON(England_Humboldt, {
+	        filter: Filter,
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+				fillColor: "pink",
+				color: "black",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+		}
+	}).addTo(map);
+  }
+
+  function FrankreichStop() {
+      checkFrank=false
+      $('#bt1').show()
+      $('#bt1no').hide()
+      map.removeLayer(marker1)
+  }
+  
+  function Frankreich(lat,lng,zoom) {
+      checkFrank=true
+      $('#bt1no').show()
+      $('#bt1no').css("border","3px solid blue");
+
+      if (marker1 != "") {
+	  map.removeLayer(marker1)
+      }
+      
+      marker1 = L.geoJSON(Frankreich_Humboldt, {
+	  filter: Filter,
+	  style: function (feature) {
+	      return feature.properties && feature.properties.style;
+	  },
+	  
+	  onEachFeature: onEachFeature,
+	  
+	  pointToLayer: function (feature, latlng) {
+	      
+	      return L.circleMarker(latlng, {
+		  radius: feature.properties.radius,
+		  fillColor: "blue",
+		  color: feature.properties.color,
+		  weight: 1,
+		  opacity: 1,
+		  fillOpacity: feature.properties.opacity
+	      });
+	  }
+      }).addTo(map);
+  }
+
+  function SpanienStop() {
+      checkSpan=false
+      $('#bt2').show()
+      $('#bt2no').hide()
+      map.removeLayer(marker2)
+  }
+  function Spanien(lat,lng,zoom) {
+      checkSpan=true
+      //$('#bt2').hide()
+      $('#bt2no').show()
+      $('#bt2no').css("border","3px solid red");
+     
+     
+      if (marker2 != "") {
+	  map.removeLayer(marker2)
+      }
+      /*
+      if (lat=="") {
+      map.flyTo([30.737, 0.923], 5)
+             }
+      else {
+
+	   map.flyTo([lat, lng], zoom)
+      }*/
+      marker2 =L.geoJSON(Spanien_Humboldt, {
+	      filter: Filter,
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+				fillColor: "red",
+				color: "red",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+		}
+	   }).addTo(map);
+  }
+
+  function RusslandEhrenbergStop() {
+      checkEhrenberg=false
+      $('#bt3').show()
+      $('#bt3no').hide()
+      map.removeLayer(marker3)
+  }
+
+  function RusslandEhrenberg(lat,lng,zoom) {
+      checkEhrenberg=true
+      //$('#bt3').hide()
+      $('#bt3no').show()
+      $('#bt3no').css("border","3px solid green");
+      
+      
+      if (marker3 != "") {
+	  map.removeLayer(marker3)
+      }
+      /*
+      if (lat=="") {
+      map.flyTo([30.737, 79.923], 4)
+         }
+      else {
+
+	   map.flyTo([lat, lng], zoom)
+      }*/
+      marker3 = L.geoJSON(Russland_Ehrenberg, {
+	  filter: Filter,
+		style: function (feature) {
+		    return feature.properties && feature.properties.style;
+		},
+	  
+	  onEachFeature: onEachFeature,
+	        
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: feature.properties.radius,
+				fillColor: "green",
+				color: "black",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: feature.properties.opacity
+			});
+		}
+    }).addTo(map);
+  }
+
+ 
+   function RusslandHumboldtStop() {
+      checkRussland=false
+      $('#bt4').show()
+      $('#bt4no').hide()
+      map.removeLayer(marker4)
+   }
+
+  var lat=""
+  var lng=""
+  var zoom=""
+  
+  function RusslandHumboldt(lat,lng,zoom) {
+      checkRussland=true
+      $('#bt4no').show()
+      $('#bt4no').css("border","3px solid black");
+    
+      if (marker4 != "") {
+	  map.removeLayer(marker4)
+      }
+      /*
+      if (lat == "") {
+          map.flyTo([30.737, 79.923], 4)
+      }
+      else {
+      
+	   map.flyTo([lat, lng], zoom)
+      }*/
+      
+         //map.panTo(new L.LatLng(35.737, 79.923));
+         marker4= L.geoJSON(Russland_Humboldt, {
+	     filter: Filter,
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+				fillColor: "black",
+				color: "black",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+		}
+	}).addTo(map);
+ }
+
+  function AmerikaStop() {
+      checkAmerika=false
+      $('#bt5').show()
+      $('#bt5no').hide()
+      map.removeLayer(marker5)
+  }
+  
+  function Amerika(lat,lng, zoom) {
+     
+      checkAmerika=true
+      $('#bt5no').show()
+      $('#bt5no').css("border","3px solid orange");
+      
+      if (marker5 != "") {
+	  map.removeLayer(marker5)
+      }
+      /*
+      if (lat == "") {
+	  map.flyTo([5.737, -90.923], 4)
+      }
+      
+      else {
+	  map.flyTo([lat, lng], zoom)
+      }*/
+      marker5 = L.geoJSON(Amerika_Humboldt, {
+	  filter: Filter,
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		},
+
+		onEachFeature: onEachFeature,
+
+		pointToLayer: function (feature, latlng) {
+			return L.circleMarker(latlng, {
+				radius: 6,
+				fillColor: "orange",
+				color: "orange",
+				weight: 1,
+				opacity: 1,
+				fillOpacity: 0.8
+			});
+		}
+    }).addTo(map);
+  }
+    function onMouseOut(e){
+        d3.select(map.getContainer()).select(".tooltip").remove();
+    }
+
+
+  //Initialize Map
+
+  if (parameters.lat !=0 && parameters.lng!=0) 
+  {
+      map.flyTo([parameters.lat, parameters.lng], 7)
+  }
+
+  if (parameters.karte=="streetmap") {
+      Map1()
+  }
+    if (parameters.findbuch=="true") {
+	map.flyTo([50, 10], 5)
+	RunFindbuch()
+  }
+  if (parameters.karte=="satellite") {
+      Map2()
+  }
+  if (parameters.karte=="topographie") {
+      Map3()
+  }
+  if (parameters.karte=="ural") {
+      Ural()
+  }
+  if (parameters.karte=="frankreich1800") {
+      Frankreich1800()
+  }
+  if (parameters.animation=="reise1") {
+      RunAnimation(parameters.lat,parameters.lng, parameters.zoom, parameters.file)
+  }
+
+  if (parameters.reise=="england") {
+
+      //inputVal1=parameters.begin
+      //inputVal2=parameters.end
+      //UpdateDatum()
+      
+      //England(45,2, 8)
+      //Chronolog(45,2,8)
+      RunAnimation(6, parseFloat(parameters.dist), parseFloat(parameters.days) )
+      setTimeout(update, 3500);
+      
+      
+  }
+  if (parameters.reise=="trautgott_1786") {
+      RunAnimation(8, parseFloat(parameters.dist), parseFloat(parameters.days))
+      setTimeout(update, 3500);
+      
+  }
+
+
+  if (parameters.reise=="goethe_italien") {
+      
+      RunAnimation(7, parseFloat(parameters.dist), parseFloat(parameters.days))
+      setTimeout(update, 3500);
+      
+  }
+  if (parameters.reise=="frankreich") {
+      Frankreich(parameters.lat,parameters.lng, parameters.zoom)
+      RunAnimation(1, parseFloat(parameters.dist), parseFloat(parameters.days))
+      setTimeout(update, 3500);
+  }
+  
+  if (parameters.reise=="spanien") {
+      Spanien(parameters.lat,parameters.lng, parameters.zoom)
+      Chronolog(parameters.lat,parameters.lng, parameters.zoom)
+      RunAnimation(2, parseFloat(parameters.dist), parseFloat(parameters.days))
+      setTimeout(update, 3500);
+  }
+
+   if (parameters.reise=="russlandhumboldt") {
+       RusslandHumboldt(parameters.lat,parameters.lng, parameters.zoom)
+       //RusslandEhrenberg(parameters.lat,parameters.lng, parameters.zoom)
+       RunAnimation(4, parseFloat(parameters.dist), parseFloat(parameters.days))
+       setTimeout(update, 3500);
+   }
+  
+   if (parameters.reise=="russlandehrenberg") {
+       //RusslandHumboldt(parameters.lat,parameters.lng, parameters.zoom)
+       RusslandEhrenberg(parameters.lat,parameters.lng, parameters.zoom)
+       RunAnimation(3, parseFloat(parameters.dist), parseFloat(parameters.days))
+       setTimeout(update, 3500);
+   }
+   
+    if (parameters.reise=="amerika") {
+	map.flyTo([10, -64], 5)
+	//Chronolog(-54,20,6)
+	//Amerika(parameters.lat,parameters.lng, parameters.zoom)
+	RunAnimation(5, parseFloat(parameters.dist), parseFloat(parameters.days))
+	setTimeout(update, 3500);
+    }
+
+  if (parameters.ortsregister=="schleiermacher")
+  {
+      varcs='all';
+      RunSchleiermacher()
+  }
+
+  if (parameters.reise=="chronologie") {
+      Chronolog(parameters.lat,parameters.lng, parameters.zoom)
+  }
+
+
+    if (parameters.reiseroute!=undefined) {
+	fromGit("Laden", "Ansicht")
+    }
+
+    if (parameters.nachbarn=="true")
+    {
+	map.flyTo([parameters.lat, parameters.lng], parameters.zoom)
+	ProcessClick(parameters.lat,parameters.lng, parameters.dist)
+    }
+   
+    //Bilddownload:
+    var node = document.getElementById('map');
+    var btn = document.getElementById('download');
+
+    // node.innerHTML = "I'm an image now."
+    
+    btn.onclick = function() {
+	var filename = prompt("Please enter file name (jpg oder png)", "image.png");
+	polylineMeasure.remove();
+	$(".leaflet-control").hide()
+	domtoimage.toBlob(document.getElementById('map'))
+	    .then(function(blob) {
+		window.saveAs(blob, filename);
+	    });
+	$( document ).ready(function() {
+	    polylineMeasure.addTo(map);
+	    $(".leaflet-control").show()
+	});
+    }
+
+  function handler (ev) {
+      eval($(this).val())
+  }
+  $('#reise').click(handler).blur(handler).change(handler);
+  
+  function handler1 (ev) {
+      eval($(this).val())
+  }
+  
+  $('#myList1').click(handler1).blur(handler1).change(handler1);
+  
+  function handler2 (ev) {
+      eval($(this).val())
+    }
+  $('#corSea').click(handler2).blur(handler2).change(handler2);
+  
+  function handler3 (ev) {
+	eval($(this).val())
+  }
+  $('#selectcountry').click(handler3).blur(handler3).change(handler3);
+
+  function handler4 (ev) {
+	eval($(this).val())
+  }
+  $('#miles').click(handler4).blur(handler4).change(handler4);
+</script>
+</body>
+</html>
+
