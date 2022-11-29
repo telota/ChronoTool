@@ -1,0 +1,545 @@
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		#text {
+			width: 48%;
+			height: 1000px;
+			display: inline-block;
+		}
+
+		.button1 {
+		    background-color: white;
+		    border: none;
+		    color: #0078A8;
+		    text-align: center;
+		    text-decoration: none;
+		    display: inline-block;
+		    font-size: 14px;
+		    margin: 4px 2px;
+		    cursor: pointer;
+		    z-index:12000;
+		}
+
+		
+		.button {
+		    background: white;
+		    z-index:12000;
+		    font-size : 11px;
+		    maxwidth: 30px;
+
+		}
+
+		
+		svg {
+		    position: relative;
+		}
+		.lineConnect {
+		       fill: transparent;
+		       stroke-width: 3px;
+		       stroke:  black;
+		       stroke-opacity: 1;
+		   }
+		.travelMarker {
+		    fill: yellow;
+		    opacity: 0.75;
+		}
+		.waypoints {
+		    fill: black;
+		    opacity: 0.33;
+		}
+		
+		#map {
+			width: 100%;
+			height: 1000px;
+			display: inline-block;
+			float:left; 
+		}.tooltip{ width: 80px; height: 80px; position: absolute; left: -9999p; }
+		.tooltip > svg{ margin:auto; display: block; }
+
+
+
+		#wrapper {
+		    margin: 0 auto;
+		    width: 100%;
+		}
+
+		#panel{
+		    float: left;
+		    width: 100%;
+		    height:0px;
+		    background-color: #175B81;
+		    color:white;
+		}
+
+
+		.sidebar {
+		    position: absolute;
+		    right:0px;
+		    float: right;
+		    width: 20%;
+		    overflow: auto;
+		    max-height:800px;
+		    background-color: white;
+		    color: #175B81;
+		}
+
+		#footer {
+		    float: left;
+		    background-color: #175B81;
+		    color: white;
+		    width: 100%;
+		    height:0px
+		}
+		
+		.text-labels     {
+		    font-weight: bold;
+		    color:#006400;
+		    font-family: "Arial Black"
+				     font-size: 20px ;
+		    line-height:25px;
+		    text-align:center;
+		}
+   
+		table, th, td 
+		{
+		    margin:0px 5px;
+		    /*border:solid 1px #333; */
+		    padding:2px 4px;
+		    font:10px Verdana;
+		}
+		th {
+		font-size:14px;
+		font-weight:bold
+	}
+td {
+		font-size:14px;
+		font-weight:normal
+	}
+tr {
+		background: white;
+	}
+	
+tbody  tr:hover {
+		background: yellow;
+	}
+table {
+		border-collapse: collapse;
+	}  
+.table a
+{
+    display:block;
+    text-decoration:none;
+}
+#f1{
+	font-weight:bold
+}
+.p2 {
+    font-size: 24px;
+	font-weight:bold;
+    position: relative;
+    top: 11px;
+	left: 20px;
+	display:inline-block;
+}
+	#txtboxes{
+	font-weight:bold;
+	display:inline-block;
+	text-align: right;
+	margin: auto;
+    width: 95%;
+    padding: 10px;
+}
+	</style>
+	.tooltip {
+
+	    background:white;
+
+
+	}
+
+	/* Create two equal columns that floats next to each other */
+
+/*.main {
+position:relative
+
+}*/
+
+left::after {
+  content: "";
+  background: url(Logo.png);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+.row {
+  float: left;
+  text-align: left;
+  background: #ffffff;
+  //border-style: solid;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  border-style: none
+}
+
+.stylebox {
+  float: left;
+  text-align: left;
+  background: #ffffff;
+  //border-style: solid;
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  border-style: none
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 50px 0;
+}
+
+td {
+  padding: 3px 40px;
+}
+
+
+.backbutton {
+  top: 5%;
+  float: left;
+  background: #ffffff;
+  width: 20%;
+  height: 20%;
+  padding: 10px;
+  z-index:10;
+}
+
+
+
+a {
+  text-decoration: none;
+}
+
+nav {
+    font-family: monospace;
+}
+
+ul {
+    background: white;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+    position: relative;
+    height: auto;
+}
+
+li {
+    /*color: #fff;*/
+    background: white;
+    height: auto;
+    /*display: block;*/
+    /*float: left;*/
+    /*display: inline;*/
+    /*padding: 1rem;*/
+    display: inline-block;
+    width: auto;
+    list-style: outside none none;
+    /*position: relative;*/
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+  
+li a {
+  color: #fff;
+}
+
+li:hover {
+    background: blue;
+    cursor: pointer;
+}
+
+ul li ul {
+    background: lightblue;
+    visibility: hidden;
+  opacity: 0.5;
+  min-width: 5rem;
+    position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+    left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+ul li ul li {
+    clear: both;
+  width: 100%;
+}
+
+.btn-group button {
+  background-color: #4CAF50; /* Green background */
+  border: 1px solid green; /* Green border */
+  color: white; /* White text */
+  padding: 10px 24px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+  bottom: -20px;
+  left: 5px;
+  z-index: 10000;
+ 
+  }
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+  background-color: #3e8e41;
+}
+
+/*
+.center {
+  margin: auto;
+  width: 50%;
+  //border: 3px solid #73AD21;
+  padding: 10px;
+
+}
+*/
+
+.form-sidebar {
+  /*position: relative;*/
+  z-index: 10000;
+  ledt: 0;
+  display: block;
+  width: 25%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  opacity: 0.8;
+}
+.sidenav_allinformation_button {
+  height: 100%;
+  width: 10px;
+  position: absolute;
+  z-index: 10000;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  overflow-y:scroll;
+  transition: 0.5s;
+  padding-top: 60px;
+  opacity: 0.3;
+}
+
+.sidenav_allinformation {
+  height: 100%;
+  width: 80px;
+  position: fixed;
+  z-index: 20000;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  overflow-y:scroll;
+  transition: 0.5s;
+  padding-top: 60px;
+  opacity: 0.3;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.closebtn {
+    z-index:25000;
+    position: absolute;
+    top: -10px;
+    right: 465px;
+    font-size: 36px;
+    margin-left: 50px;
+    color:black;
+}
+.openbtn {
+    z-index:25000;
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: black;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.sidefilter {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  opacity: 0.6;
+}
+
+.sidefilter a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidefilter a:hover {
+  color: #f1f1f1;
+}
+
+.sidefilter .closebtn {
+  position: absolute;
+  top: 0;
+  right: 240px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidefilter {padding-top: 15px;}
+  .sidefilter a {font-size: 18px;}
+}
+
+p {
+    /*line-height: 32px;   within paragraph */
+  margin-bottom: 10px; /* between paragraphs */
+  }
+
+label {
+color:#818181;
+}
+
+
+
+/*the container must be positioned relative:*/
+.autocomplete {
+  position: relative;
+  display: inline-block;
+}
+
+/*input {
+  border: 1px solid transparent;
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-size: 16px;
+}
+*/
+input[type=text] {
+  background-color: #f1f1f1;
+  width: 100%;
+}
+
+input[type=submit] {
+  background-color: DodgerBlue;
+  color: #fff;
+  cursor: pointer;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
