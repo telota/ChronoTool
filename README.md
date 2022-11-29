@@ -8,6 +8,9 @@ In dem hier vorgestellten Experiment werden nicht nur die Einträge aus mehreren
 
 Zu den Daten aus der Chronologie kommen daher Informationen über Briefe von und an Humboldt mitsamt Absendedaten und -orten aus correspSearch (https://correspsearch.net/) sowie sukzessive auch aus anderen Quellen und der umfassenden Sekundärliteratur, die weiterhin die Stationen der Reise ergänzen helfen. Als weitere Datenquellen für das hier vorgestellte Experiment kommen Geo-daten aus GeoNames und historische sowie zeitgenössische Karten aus OpenStreetMap hinzu. Erst aus dieser Aggregation dieser verschiedenen Datenquellen und -typen ergibt sich die Möglichkeit einer genauen Rekonstruktion der Reiserouten und weiterer Aufenthaltsorte Humboldts – und das im Idealfall auf Tage oder gar Stunden genau.   
 
+![reiseafrika](https://user-images.githubusercontent.com/54958922/204593421-4f5408e4-8d5a-4590-94a8-16d7a7607e36.jpg)
+
+
   
 ## Mitmachen
 
